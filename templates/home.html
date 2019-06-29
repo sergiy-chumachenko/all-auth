@@ -1,9 +1,14 @@
+{% load socialaccount %}
+
 <h1>Homepage</h1>
 <h2>Django All Auth</h2>
 {% if user.is_authenticated %}
     <p>Hi {{ user.username }}!</p>
-    <p><a href="{% url 'logout' %}">Logout</a></p>
+    <p><a href="{% url 'account_logout' %}">Logout</a></p>
 {% else %}
-    <p><a href="{% url 'signup' %}">Sign Up</a></p>
-    <p><a href="{% url 'login' %}">Log In</a></p>
+    <p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+    <p><a href="{% url 'account_login' %}">Log In</a></p>
+    <p><a href="{% provider_login_url 'google' %}">Log In with Google</a></p>
+    <p><a href="{% provider_login_url 'github' %}">Log In with GitHub</a></p>
+
 {% endif %}
